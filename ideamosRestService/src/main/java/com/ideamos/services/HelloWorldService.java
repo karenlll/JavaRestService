@@ -1,4 +1,4 @@
-package com.ideamos.services;
+package main.java.com.ideamos.services;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

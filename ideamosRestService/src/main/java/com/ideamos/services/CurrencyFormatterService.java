@@ -1,4 +1,4 @@
-package com.ideamos.services;
+package main.java.com.ideamos.services;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -12,6 +12,13 @@ import org.apache.commons.lang.StringEscapeUtils;
 
 @Path("/currencyFormat")
 public class CurrencyFormatterService {
+	
+	
+
+	public CurrencyFormatterService() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@POST
     public Response currencyFormatter(@FormParam("value") double value) {
@@ -29,7 +36,7 @@ public class CurrencyFormatterService {
         	
         }else 
         {
-        	response = "Valor no válido";
+        	response = "Valor no valido";
         }
         
        response = StringEscapeUtils.escapeHtml(response);

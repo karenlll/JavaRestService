@@ -1,4 +1,4 @@
-package com.ideamos.services;
+package main.java.com.ideamos.services;
 
 import java.time.LocalDate;
 
@@ -11,6 +11,13 @@ import org.apache.commons.lang.StringEscapeUtils;
 
 @Path("/dayOfWeek")
 public class DateAndTimeService {
+
+	
+	
+	public DateAndTimeService() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	@POST
     public Response dayOfWeek(@FormParam("date") String date) {
