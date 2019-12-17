@@ -3,10 +3,9 @@ package com.ideamos.services;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import javax.ws.rs.GET;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import org.apache.commons.lang.StringEscapeUtils;
@@ -14,8 +13,10 @@ import org.apache.commons.lang.StringEscapeUtils;
 @Path("/currencyFormat")
 public class CurrencyFormatterService {
 
-	@GET
-    public Response currencyFormatter(@QueryParam("value") double value) {
+	@POST
+    public Response currencyFormatter(@FormParam("value") double value) {
+		
+		try {
         String response="";
         
         if(value>= 0 && value <= Math.pow(10, 9)) 
@@ -34,6 +35,18 @@ public class CurrencyFormatterService {
        response = StringEscapeUtils.escapeHtml(response);
         
         return Response.status(200).entity(response).build();
+        
+		}catch (NullPointerException e) 
+		{
+			return Response.status(200).entity("Required Param is null").build();
+		 } catch (NumberFormatException e) 
+		{
+			 return Response.status(200).entity("Number Format Exception").build();
+		}
+		catch(Exception e) 
+		{
+			return Response.status(200).entity("Exception doesn't expected").build();
+		}
     }
 	
 }
